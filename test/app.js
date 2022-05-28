@@ -158,5 +158,44 @@ app.listen(port, () => {
             this.type = type;
             this.price = price;
         }
+
+        getModelName() {
+            return this.modelName;
+        }
+
+        setModelName(modelName) {
+            this.modelName = modelName;
+        }
     }
+
+    let ionic = new Car("ionic", "2022", "e", "4000");
+    let genesis = new Car("genesis", "2022", "g", 8000);
+    console.log('ionic: ', ionic);
+    let modelName = ionic.getModelName();
+    console.log('modelName: ', modelName);
+    ionic.setModelName('ionic4500');
+    console.log('modelName: ', ionic.getModelName());
+
+    class ElectricCar extends Car {
+        constructor(modelName, modelYear, price, chargeTime) {
+            super(modelName, modelYear, "e", price);
+            this.chargeTime = chargeTime;
+        }
+
+        setChargeTime(time) {
+            this.chargeTime = this.chargeTime;
+        }
+
+        getChargeTime() {
+            return this.chargeTime;
+        }
+    }
+
+
+    var regexp = /World/;
+    // var regexp = new RegExp("World");
+
+    var str = "Hello World !";
+    console.log(regexp.test(str))
+    console.log(str.search(regexp));
 })()
