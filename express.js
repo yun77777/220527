@@ -2,6 +2,13 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
+const testRoute = require('./routes/route');
+const testRoute2 = require('./routes/route2');
+
+app.use(express.json({
+    limit: '50mb'
+}));
+
 app.get('/', (req, res) => {
     res.send('hello world');
 });
@@ -93,6 +100,9 @@ app.get('/test', (req, res, next) => {
     // res.sendFile(__dirname + '/example/file/test_w.txt');
     res.sendStatus(200);
 });
+
+app.use('/testRoute', testRoute);
+app.use('/testRoute2', testRoute2);
 
 app.route('/route')
 .get((req, res) => {
